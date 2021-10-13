@@ -1,0 +1,43 @@
+.ui.vertical.segment.paid {
+    background-color: #373839;
+}
+
+.ui.card, .ui.card:hover {
+    box-shadow: none !important;
+}
+
+.ui.table tr td {
+    border-top: 1px solid rgba(34,36,38,.3);
+}
+
+.ui.basic.card, .ui.basic.card:hover, .ui.basic.table {
+    background-color: #3399ff;
+}
+
+.ui.extended.card, .ui.extended.card:hover, .ui.extended.table {
+    background-color: #21ba45;
+}
+
+.ui.pro.card, .ui.pro.card:hover, .ui.pro.table {
+    background-color: #ff3333;
+}
+
+.ui.free.card, .ui.free.card:hover, .ui.free.table {
+    background-color: #373839;
+}
+
+.ui.free.table tr td {
+    border-top: 1px solid rgba(134,136,138,.3);
+}
+
+.ui.free.table, .ui.free.card>.content>.header {
+    color: lightgrey;
+}
+
+.ui.borderless.table {
+    border: none;
+}
+
+.ui .item .content .grid {
+    margin: 0;
+}

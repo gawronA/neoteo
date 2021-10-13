@@ -1,0 +1,25 @@
+.full-height {
+    flex-grow: 1;
+    position: relative;
+}
+
+.full-height > .ui.vertical.menu {
+    max-height: 100vh;
+    border: none;
+    border-radius: 0;
+    width: 200px;
+    margin: 0;
+}
+
+.board {
+    margin: 20px;
+    flex-grow: 1;
+}
+
+.ui.sticky.fixed + .board, .ui.bound.sticky + .board {
+    margin-left: 220px;
+}
+
+.ui.centered.two.column.very.relaxed.grid {
+    margin-top: 35px;
+}

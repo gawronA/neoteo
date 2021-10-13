@@ -1,0 +1,45 @@
+.full-page {
+    height: 100vh;
+}
+
+/*Main banner*/
+.main-banner {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.3)), url("/resources/images/homepage_background.jpg");
+    background-position: 0 0, center;
+    background-size: cover, cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.main-banner > .header {
+    font-size: 50px;
+    color: #e9e9e9;
+    background-color: rgba(27, 28, 29, 0.85);
+    padding: 0.1em 0.3em;
+    border: transparent;
+    border-radius: 18px;
+}
+/*Main banner*/
+
+/*Content*/
+.ui.vertical.expressive.segment {
+    padding: 8rem;
+}
+
+.ui.vertical.expressive.how-to {
+    background-color: rgb(55, 56, 57);
+}
+
+.ui.vertical.expressive.how-to .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ui.vertical.expressive.how-to h3 {
+    text-align: center;
+}
+
+.ui.vertical.expressive.how-to i {
+    font-size: 60px;
+}

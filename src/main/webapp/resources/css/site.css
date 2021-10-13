@@ -1,0 +1,90 @@
+body, .flex-column {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.flex-row {
+    display: flex !important;
+    flex-direction: row !important;
+}
+
+.flex-column.center {
+    align-items: center !important;
+}
+
+.flex-column.middle {
+    justify-content: center !important;
+}
+
+.flex-column.right {
+    align-items: end !important;
+}
+
+.full-page {
+    height: 100%;
+}
+
+/*Navbar*/
+.ui.menu>.container {
+    align-items: center;
+}
+
+.navbar.segment {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5) !important;
+}
+
+.navbar.item.active {
+    background: #21ba45 !important;
+}
+
+.navbar.item {
+    font-weight: bold !important;
+}
+
+.navbar.item:hover {
+    background: #21ba45 !important;
+}
+
+.navbar.ui.button {
+    line-height: normal;
+}
+/*Navbar*/
+
+/*Main banner*/
+.main-banner {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.3)), url("/resources/images/homepage_background.jpg");
+    background-position: 0 0, 50% 89%;
+    background-size: cover, cover;
+    background-repeat: no-repeat;
+    height: 80px;
+}
+/*Main banner*/
+
+/*Expressive segment*/
+.ui.vertical.expressive.segment {
+    padding: 4rem 8rem;
+    font-size: 1.33em;
+}
+
+.ui.vertical.expressive p {
+    font-size: 1.33em;
+}
+
+.ui.vertical.borderless.segment {
+    border: none;
+}
+/*Expressive segment*/
+
+/*Footer*/
+
+footer.ui.inverted.segment {
+    border-radius: 0;
+    margin: 0;
+}
+/*Footer*/

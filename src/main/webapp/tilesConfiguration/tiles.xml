@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="base.definition" template="/views/shared/layout.jsp">
+        <put-attribute name="stylesheets" value=""/>
+        <put-attribute name="title" value=""/>
+        <put-attribute name="body" value=""/>
+        <put-attribute name="footer" value="/views/shared/footer.jsp"/>
+        <put-attribute name="scripts" value=""/>
+    </definition>
+
+    <definition name="navbar.definition">
+        <put-attribute name="navbar" value="/views/shared/navbar.jsp"/>
+    </definition>
+
+<!--                    HOME-->
+    <definition name="/home/index" extends="base.definition">
+        <put-attribute name="stylesheets" value="/views/home/_stylesheets.jsp"/>
+        <put-attribute name="title" value="Welcome to Mobility Park!"/>
+        <put-attribute name="body">
+            <definition template="/views/home/index.jsp" extends="navbar.definition"/>
+        </put-attribute>
+    </definition>
+
+    <definition name="/home/prices/index" extends="base.definition">
+        <put-attribute name="stylesheets" value="/views/prices/_stylesheets.jsp"/>
+        <put-attribute name="scripts" value="/views/prices/_scripts.jsp"/>
+        <put-attribute name="title" value="Cennik"/>
+        <put-attribute name="body">
+            <definition template="/views/prices/index.jsp" extends="navbar.definition"/>
+        </put-attribute>
+    </definition>
+<!--                    HOME-->
+
+<!--                    DASHBOARD-->
+    <definition name="dashboard.definition" extends="base.definition">
+        <put-attribute name="stylesheets" value="/views/dashboard/_stylesheets.jsp"/>
+        <put-attribute name="scripts" value="/views/dashboard/_scripts.jsp"/>
+    </definition>
+
+    <definition name="/dashboard/index_admin" extends="dashboard.definition">
+        <put-attribute name="title" value="Admin dashboard"/>
+        <put-attribute name="body">
+            <definition template="/views/dashboard/layout.jsp" extends="navbar.definition">
+                <put-attribute name="sidenav" value="/views/dashboard/sidenav.jsp"/>
+                <put-attribute name="body" value="/views/dashboard/index_admin.jsp"/>
+            </definition>
+        </put-attribute>
+    </definition>
+
+    <definition name="/dashboard/index_employee" extends="dashboard.definition">
+        <put-attribute name="title" value="Employee dashboard"/>
+        <put-attribute name="body">
+            <definition template="/views/dashboard/layout.jsp" extends="navbar.definition">
+                <put-attribute name="sidenav" value="/views/dashboard/sidenav.jsp"/>
+                <put-attribute name="body" value="/views/dashboard/index_employee.jsp"/>
+            </definition>
+        </put-attribute>
+    </definition>
+
+    <definition name="/dashboard/index_user" extends="dashboard.definition">
+        <put-attribute name="title" value="User dashboard"/>
+        <put-attribute name="body">
+            <definition template="/views/dashboard/layout.jsp" extends="navbar.definition">
+                <put-attribute name="sidenav" value="/views/dashboard/sidenav.jsp"/>
+                <put-attribute name="body" value="/views/dashboard/index_user.jsp"/>
+            </definition>
+        </put-attribute>
+    </definition>
+
+    <definition name="/dashboard/users" extends="dashboard.definition">
+        <put-attribute name="title" value="Dashboard"/>
+        <put-attribute name="body">
+            <definition template="/views/dashboard/layout.jsp" extends="navbar.definition">
+                <put-attribute name="sidenav" value="/views/dashboard/sidenav.jsp"/>
+                <put-attribute name="body" value="/views/dashboard/users.jsp"/>
+            </definition>
+        </put-attribute>
+    </definition>
+
+    <definition name="/dashboard/payments" extends="dashboard.definition">
+        <put-attribute name="title" value="Dashboard"/>
+        <put-attribute name="body">
+            <definition template="/views/dashboard/layout.jsp" extends="navbar.definition">
+                <put-attribute name="sidenav" value="/views/dashboard/sidenav.jsp"/>
+                <put-attribute name="body" value="/views/dashboard/payments.jsp"/>
+            </definition>
+        </put-attribute>
+    </definition>
+
+    <definition name="/dashboard/subscriptions" extends="dashboard.definition">
+        <put-attribute name="title" value="Dashboard"/>
+        <put-attribute name="body">
+            <definition template="/views/dashboard/layout.jsp" extends="navbar.definition">
+                <put-attribute name="sidenav" value="/views/dashboard/sidenav.jsp"/>
+                <put-attribute name="body" value="/views/dashboard/subscriptions.jsp"/>
+            </definition>
+        </put-attribute>
+    </definition>
+
+    <definition name="/dashboard/bookings" extends="dashboard.definition">
+        <put-attribute name="title" value="Dashboard"/>
+        <put-attribute name="body">
+            <definition template="/views/dashboard/layout.jsp" extends="navbar.definition">
+                <put-attribute name="sidenav" value="/views/dashboard/sidenav.jsp"/>
+                <put-attribute name="body" value="/views/dashboard/bookings.jsp"/>
+            </definition>
+        </put-attribute>
+    </definition>
+
+    <definition name="/dashboard/roles" extends="dashboard.definition">
+        <put-attribute name="title" value="Dashboard"/>
+        <put-attribute name="body">
+            <definition template="/views/dashboard/layout.jsp" extends="navbar.definition">
+                <put-attribute name="sidenav" value="/views/dashboard/sidenav.jsp"/>
+                <put-attribute name="body" value="/views/dashboard/roles.jsp"/>
+            </definition>
+        </put-attribute>
+    </definition>
+<!--                    DASHBOARD-->
+
+<!--                    BOOKING-->
+    <definition name="/booking/index" extends="base.definition">
+        <put-attribute name="title" value="Zarezerwuj"/>
+        <put-attribute name="body">
+            <definition template="/views/booking/index.jsp" extends="navbar.definition"/>
+        </put-attribute>
+    </definition>
+<!--                    BOOKING-->
+
+<!--                    ACCOUNT-->
+    <definition name="account.definition" extends="base.definition">
+        <put-attribute name="scripts" value="/views/account/_scripts.jsp"/>
+        <put-attribute name="stylesheets" value="/views/account/_stylesheets.jsp"/>
+    </definition>
+
+    <definition name="/account/register" extends="account.definition">
+        <put-attribute name="title" value="Zarejestruj się"/>
+        <put-attribute name="body">
+            <definition template="/views/account/register.jsp" extends="navbar.definition"/>
+        </put-attribute>
+    </definition>
+
+    <definition name="/account/confirmSubscriptionChange" extends="account.definition">
+        <put-attribute name="title" value="Potwirdź zakup subskrybcji"/>
+        <put-attribute name="body">
+            <definition template="/views/account/confirmSubscriptionChange.jsp" extends="navbar.definition"/>
+        </put-attribute>
+    </definition>
+
+    <definition name="/account/details" extends="account.definition">
+        <put-attribute name="title" value="Szczegóły konta"/>
+        <put-attribute name="body">
+            <definition template="/views/account/details.jsp" extends="navbar.definition"/>
+        </put-attribute>
+    </definition>
+<!--                    ACCOUNT-->
+
+<!--                    SECURITY-->
+    <definition name="/security/login" extends="base.definition">
+        <put-attribute name="title" value="Zaloguj się"/>
+        <put-attribute name="body">
+            <definition template="/views/security/login.jsp" extends="navbar.definition">
+            </definition>
+        </put-attribute>
+    </definition>
+
+    <definition name="/security/forbidden" extends="base.definition">
+        <put-attribute name="title" value="Brak dostępu"/>
+        <put-attribute name="body">
+            <definition template="/views/security/forbidden.jsp" extends="navbar.definition">
+            </definition>
+        </put-attribute>
+    </definition>
+<!--                    SECURITY-->
+    <!--<definition name="/home/index" extends="base.definition">
+        <put-attribute name="stylesheets" value="/views/home/_stylesheets.jsp"/>
+        <put-attribute name="title" value="Welcome to Mobility Park!" />
+        <put-attribute name="scripts" value="/views/home/_scripts.jsp"/>
+        <put-attribute name="body">
+            <definition template="/views/home/layout.jsp">
+                <put-attribute name="navbar" value="/views/home/navbar.jsp"/>
+                <put-attribute name="header" value="/views/home/header.jsp"/>
+                <put-attribute name="content1" value="/views/home/content1.jsp"/>
+                <put-attribute name="content2" value="/views/home/content2.jsp"/>
+                <put-attribute name="footer" value="/views/home/footer.jsp"/>
+            </definition>
+        </put-attribute>
+    </definition>-->
+</tiles-definitions>
