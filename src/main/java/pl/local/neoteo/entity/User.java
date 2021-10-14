@@ -41,7 +41,7 @@ public class User {
 
     private boolean isActive;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Property property;
 
     @ManyToMany(fetch = FetchType.EAGER)
