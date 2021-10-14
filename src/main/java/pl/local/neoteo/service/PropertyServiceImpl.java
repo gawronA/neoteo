@@ -33,6 +33,24 @@ public class PropertyServiceImpl implements PropertyService {
         this.propertyExtService = propertyExtService;
     }
 
+    private DatabaseResult addProperty(Property property) {
+        property.setId(0);
+        try {
+            this.propertyExtService.save(property);
+        }
+        catch (Exception ex) {
+            return DatabaseResult.Error;
+        }
+        return DatabaseResult.Success;
+    }
+
+    public DatabaseResult updateProperty(Property property) {
+        var dbProperty = this.propertyRepository.findById(property.getId());
+        if(dbProperty.isEmpty()) return DatabaseResult.Error;
+
+        return addProperty(property);
+    }
+
     @Transactional
     public Property getProperty(long id) {
         var prop = this.propertyRepository.findById(id);
@@ -43,15 +61,4 @@ public class PropertyServiceImpl implements PropertyService {
         return this.propertyRepository.findAll();
     }
 
-    public DatabaseResult activateProperty(long id) {
-        var prop = this.propertyRepository.findById(id);
-        try {
-            prop.orElseThrow().setActive(true);
-            this.propertyExtService.save(prop.get());
-        }
-        catch (Exception ex) {
-            return DatabaseResult.Error;
-        }
-        return DatabaseResult.Success;
-    }
 }

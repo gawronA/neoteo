@@ -43,9 +43,10 @@ public class UserRoleServiceImpl implements UserRoleService {
         this.userRoleRepository = userRoleRepository;
     }
 
-    public DatabaseResult addUserRole(UserRole UserRole) {
+    public DatabaseResult addUserRole(UserRole userRole) {
+        userRole.setId(0);
         try {
-            this.userRoleExtService.save(UserRole);
+            this.userRoleExtService.save(userRole);
         }
         catch (Exception ex) {
             return DatabaseResult.AlreadyExist;
@@ -76,7 +77,6 @@ public class UserRoleServiceImpl implements UserRoleService {
 
     @Transactional
     public UserRole getUserRole(String role) {
-        var userRole = userRoleRepository.findByRole(role);
-        return userRole;
+        return userRoleRepository.findByRole(role);
     }
 }

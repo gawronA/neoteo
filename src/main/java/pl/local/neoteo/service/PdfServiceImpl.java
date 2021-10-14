@@ -4,8 +4,7 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.stereotype.Service;
-import pl.local.neoteo.entity.AppUser;
-import pl.local.neoteo.entity.Payment;
+import pl.local.neoteo.entity.User;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -14,14 +13,14 @@ import java.io.OutputStream;
 @Service
 public class PdfServiceImpl implements PdfService {
 
-    private final PaymentService paymentService;
+    //private final PaymentService paymentService;
 
-    public PdfServiceImpl(PaymentService paymentService) {
+    /*public PdfServiceImpl(PaymentService paymentService) {
         this.paymentService = paymentService;
-    }
+    }*/
 
     @Override
-    public void generatePaymentsPdf(AppUser user, HttpServletResponse response) {
+    public void generatePaymentsPdf(User user, HttpServletResponse response) {
         try {
             OutputStream o = response.getOutputStream();
             response.setCharacterEncoding("UTF-8");
@@ -42,12 +41,12 @@ public class PdfServiceImpl implements PdfService {
             table.addCell("Kwota");
             table.addCell("Oplacone");
 
-            for(Payment payment : user.getPayments()) {
+            /*for(Payment payment : user.getPayments()) {
                 table.addCell(payment.getName());
                 table.addCell(Double.toString(payment.getAmount()));
                 if(payment.isPaid()) table.addCell("Tak");
                 else table.addCell("Nie");
-            }
+            }*/
 
             pdf.add(table);
             pdf.close();

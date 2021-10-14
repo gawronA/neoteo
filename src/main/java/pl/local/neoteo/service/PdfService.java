@@ -1,9 +1,9 @@
 package pl.local.neoteo.service;
 
-import pl.local.neoteo.entity.AppUser;
+import pl.local.neoteo.entity.User;
 
 import javax.servlet.http.HttpServletResponse;
 
 public interface PdfService {
-    public void generatePaymentsPdf(AppUser user, HttpServletResponse response);
+    void generatePaymentsPdf(User user, HttpServletResponse response);
 }

@@ -49,6 +49,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public DatabaseResult addUser(User user) {
+        user.setId(0);
         try {
             userExtService.save(user);
         }
@@ -59,7 +60,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public DatabaseResult editUser(User user) {
+    public DatabaseResult updateUser(User user) {
         return addUser(user);
     }
 

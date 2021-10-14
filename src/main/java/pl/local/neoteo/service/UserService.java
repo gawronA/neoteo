@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface UserService {
     public DatabaseResult addUser(User user);
-    public DatabaseResult editUser(User user);
+    public DatabaseResult updateUser(User user);
     public DatabaseResult deleteUser(long id);
     public User getUser(long id);
-    public User getUser(String username);
+    public User getUser(String email);
     public List<User> getUsers();
 }
