@@ -113,7 +113,7 @@
         <div class="field">
             <label><spring:message code="user.payments"/></label>
             <form:select path="payments" multiple="true">
-                <%--@elvariable id="appUser" type="pl.local.mpark.entity.AppUser"--%>
+                <%--@elvariable id="appUser" type="pl.local.neoteo.entity.AppUser"--%>
                 <form:option value="0" label="${msgNone}"/>
                 <c:forEach items="${appUser.payments}" var="payment">
                     <c:if test="${payment.paid}"><form:option value="${payment.id}" label="${payment.amount}zł - OPŁACONA - ${payment.name}"/></c:if>
@@ -128,7 +128,7 @@
         <div class="field">
             <label><spring:message code="user.bookings"/></label>
             <form:select path="bookings" multiple="true">
-                <%--@elvariable id="appUser" type="pl.local.mpark.entity.AppUser"--%>
+                <%--@elvariable id="appUser" type="pl.local.neoteo.entity.AppUser"--%>
                 <form:option value="0" label="${msgNone}"/>
                 <c:forEach items="${appUser.bookings}" var="booking">
                     <c:if test="${booking.accepted}"><form:option value="${booking.id}" label="${booking.fromTime} - ${booking.toTime} ZAAKCEPTOWANA"/></c:if>

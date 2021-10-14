@@ -31,7 +31,7 @@
             </thead>
             <tbody>
 
-            <%--@elvariable id="subscription" type="pl.local.mpark.entity.Subscription"--%>
+            <%--@elvariable id="subscription" type="pl.local.neoteo.entity.Subscription"--%>
             <c:forEach items="${subscriptions}" var="subscription">
                 <tr>
                     <td>${subscription.name}</td>

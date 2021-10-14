@@ -3,14 +3,6 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.23">
     <root id="1">
       <ServerVersion>14.0</ServerVersion>
-      <Grants>1||-9223372036854775808|c|G
-1||10|c|G
-1||10|C|G
-1||10|T|G
-13756||-9223372036854775808|c|G
-13756||10|c|G
-13756||10|C|G
-13756||10|T|G</Grants>
       <DateStyle>mdy</DateStyle>
       <TimeZones>true ACDT
 true ACSST
@@ -1388,7 +1380,7 @@ true posix/WET
 false posix/Zulu
 true posixrules
 </TimeZones>
-      <IntrospectionStateNumber>775</IntrospectionStateNumber>
+      <IntrospectionStateNumber>810</IntrospectionStateNumber>
       <StartupTime>1634072785</StartupTime>
     </root>
     <database id="2" parent="1" name="neoteo">
@@ -1404,7 +1396,7 @@ true posixrules
 13391||-9223372036854775808|U|G
 13391||10|U|G</Grants>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>776</IntrospectionStateNumber>
+      <IntrospectionStateNumber>811</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <database id="3" parent="1" name="postgres">
@@ -1483,7 +1475,7 @@ true posixrules
       <Comment>standard public schema</Comment>
       <StateNumber>527</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>776</IntrospectionStateNumber>
+      <IntrospectionStateNumber>811</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="21" parent="2" name="plpgsql">
@@ -1584,5 +1576,11 @@ true posixrules
       <Handler>pg_catalog.spghandler</Handler>
       <HandlerId>334</HandlerId>
     </access-method>
+    <sequence id="33" parent="20" name="hibernate_sequence">
+      <ObjectId>24620</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>790</StateNumber>
+      <DataType>bigint|0s</DataType>
+    </sequence>
   </database-model>
 </dataSource>

@@ -7,7 +7,7 @@
 
 <spring:message code="name" var="msgName"/>
 
-<%--@elvariable id="appUserRole" type="pl.local.mpark.entity.AppUserRole"--%>
+<%--@elvariable id="appUserRole" type="pl.local.neoteo.entity.AppUserRole"--%>
 <form:form id="roleModalForm" class="ui form" action="roles" method="post" modelAttribute="appUserRole">
     <form:input type="hidden" path="id"/>
     <div class="field">

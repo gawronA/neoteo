@@ -28,7 +28,7 @@
             </thead>
             <tbody>
 
-            <%--@elvariable id="appUserRole" type="pl.local.mpark.entity.AppUserRole"--%>
+            <%--@elvariable id="appUserRole" type="pl.local.neoteo.entity.AppUserRole"--%>
             <c:forEach items="${appUserRoles}" var="appUserRole">
                 <tr>
                     <td>${appUserRole.role}</td>

@@ -34,7 +34,7 @@
             </thead>
             <tbody>
 
-            <%--@elvariable id="booking" type="pl.local.mpark.entity.Booking"--%>
+            <%--@elvariable id="booking" type="pl.local.neoteo.entity.Booking"--%>
             <c:forEach items="${bookings}" var="booking">
                 <tr>
                     <td>${booking.appUser.firstName} ${booking.appUser.lastName}</td>
