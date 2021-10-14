@@ -6,7 +6,7 @@ import pl.local.neoteo.helper.DatabaseResult;
 
 import java.util.List;
 
-@Service//("bookingService")
+@Service
 public interface UtilityService {
     public DatabaseResult addUtility(Utility utility);
     public DatabaseResult updateUtility(Utility utility);

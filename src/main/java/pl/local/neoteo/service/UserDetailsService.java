@@ -15,7 +15,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Service//("userDetailsService")
+@Service
 @Transactional(readOnly = true)
 public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
 

@@ -1380,7 +1380,7 @@ true posix/WET
 false posix/Zulu
 true posixrules
 </TimeZones>
-      <IntrospectionStateNumber>810</IntrospectionStateNumber>
+      <IntrospectionStateNumber>833</IntrospectionStateNumber>
       <StartupTime>1634072785</StartupTime>
     </root>
     <database id="2" parent="1" name="neoteo">
@@ -1396,7 +1396,7 @@ true posixrules
 13391||-9223372036854775808|U|G
 13391||10|U|G</Grants>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>811</IntrospectionStateNumber>
+      <IntrospectionStateNumber>834</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <database id="3" parent="1" name="postgres">
@@ -1475,7 +1475,7 @@ true posixrules
       <Comment>standard public schema</Comment>
       <StateNumber>527</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>811</IntrospectionStateNumber>
+      <IntrospectionStateNumber>834</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="21" parent="2" name="plpgsql">
@@ -1582,5 +1582,474 @@ true posixrules
       <StateNumber>790</StateNumber>
       <DataType>bigint|0s</DataType>
     </sequence>
+    <table id="34" parent="20" name="property">
+      <ObjectId>24656</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>825</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+    </table>
+    <table id="35" parent="20" name="property_utility">
+      <ObjectId>24661</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>826</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+    </table>
+    <table id="36" parent="20" name="user">
+      <ObjectId>24666</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>825</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+    </table>
+    <table id="37" parent="20" name="user_userrole">
+      <ObjectId>24673</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>829</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+    </table>
+    <table id="38" parent="20" name="userrole">
+      <ObjectId>24678</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>829</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+    </table>
+    <table id="39" parent="20" name="utility">
+      <ObjectId>24683</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>826</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+    </table>
+    <table id="40" parent="20" name="utilitytype">
+      <ObjectId>24688</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>831</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+    </table>
+    <column id="41" parent="34" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>812</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="42" parent="34" name="isactive">
+      <Position>2</Position>
+      <DataType>boolean|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>812</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="43" parent="34" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>812</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="44" parent="34" name="user_id">
+      <Position>4</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>812</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="45" parent="34" name="property_pkey">
+      <ObjectId>24659</ObjectId>
+      <StateNumber>812</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="46" parent="34" name="property_pkey">
+      <ObjectId>24660</ObjectId>
+      <StateNumber>812</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>property_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="47" parent="34" name="fkdf7hj1punjlx6pv8tu3de0mc5">
+      <ObjectId>24701</ObjectId>
+      <StateNumber>825</StateNumber>
+      <ColNames>user_id</ColNames>
+      <RefTableId>24666</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>user_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="48" parent="35" name="property_id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>813</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="49" parent="35" name="utilities_id">
+      <Position>2</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>813</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="50" parent="35" name="property_utility_pkey">
+      <ObjectId>24664</ObjectId>
+      <StateNumber>813</StateNumber>
+      <ColNames>property_id
+utilities_id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <CollationIds>0,0</CollationIds>
+      <ClassIds>3124,3124</ClassIds>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="51" parent="35" name="uk_n4p2rmo3esfjt6col39sax1gs">
+      <ObjectId>24695</ObjectId>
+      <StateNumber>820</StateNumber>
+      <ColNames>utilities_id</ColNames>
+      <Unique>1</Unique>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="52" parent="35" name="property_utility_pkey">
+      <ObjectId>24665</ObjectId>
+      <StateNumber>813</StateNumber>
+      <ColNames>property_id
+utilities_id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>property_utility_pkey</UnderlyingIndexName>
+    </key>
+    <key id="53" parent="35" name="uk_n4p2rmo3esfjt6col39sax1gs">
+      <ObjectId>24696</ObjectId>
+      <StateNumber>820</StateNumber>
+      <ColNames>utilities_id</ColNames>
+      <UnderlyingIndexName>uk_n4p2rmo3esfjt6col39sax1gs</UnderlyingIndexName>
+    </key>
+    <foreign-key id="54" parent="35" name="fkbjwsf3sw4f33mm8y07rkgsorq">
+      <ObjectId>24711</ObjectId>
+      <StateNumber>827</StateNumber>
+      <ColNames>property_id</ColNames>
+      <RefTableId>24656</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>property</RefTableName>
+      <RefKeyName>property_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="55" parent="35" name="fksdbht285p93glbstkwra7wio6">
+      <ObjectId>24706</ObjectId>
+      <StateNumber>826</StateNumber>
+      <ColNames>utilities_id</ColNames>
+      <RefTableId>24683</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>utility</RefTableName>
+      <RefKeyName>utility_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="56" parent="36" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>814</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="57" parent="36" name="balance">
+      <Position>2</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>814</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="58" parent="36" name="email">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>814</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="59" parent="36" name="firstname">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>814</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="60" parent="36" name="isactive">
+      <Position>5</Position>
+      <DataType>boolean|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>814</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="61" parent="36" name="lastname">
+      <Position>6</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>814</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="62" parent="36" name="password">
+      <Position>7</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>814</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="63" parent="36" name="pesel">
+      <Position>8</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>814</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="64" parent="36" name="phone">
+      <Position>9</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>814</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="65" parent="36" name="property_id">
+      <Position>10</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>814</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="66" parent="36" name="user_pkey">
+      <ObjectId>24671</ObjectId>
+      <StateNumber>814</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="67" parent="36" name="uk_e6gkqunxajvyxl5uctpl2vl2p">
+      <ObjectId>24697</ObjectId>
+      <StateNumber>822</StateNumber>
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+      <CollationIds>100</CollationIds>
+      <CollationNames>default</CollationNames>
+      <ClassIds>3126</ClassIds>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="68" parent="36" name="user_pkey">
+      <ObjectId>24672</ObjectId>
+      <StateNumber>814</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>user_pkey</UnderlyingIndexName>
+    </key>
+    <key id="69" parent="36" name="uk_e6gkqunxajvyxl5uctpl2vl2p">
+      <ObjectId>24698</ObjectId>
+      <StateNumber>822</StateNumber>
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>uk_e6gkqunxajvyxl5uctpl2vl2p</UnderlyingIndexName>
+    </key>
+    <foreign-key id="70" parent="36" name="fkdveswci42003mdl5rtnl2uyfl">
+      <ObjectId>24716</ObjectId>
+      <StateNumber>828</StateNumber>
+      <ColNames>property_id</ColNames>
+      <RefTableId>24656</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>property</RefTableName>
+      <RefKeyName>property_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="71" parent="37" name="user_id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>815</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="72" parent="37" name="userroles_id">
+      <Position>2</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>815</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="73" parent="37" name="user_userrole_pkey">
+      <ObjectId>24676</ObjectId>
+      <StateNumber>815</StateNumber>
+      <ColNames>user_id
+userroles_id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <CollationIds>0,0</CollationIds>
+      <ClassIds>3124,3124</ClassIds>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="74" parent="37" name="user_userrole_pkey">
+      <ObjectId>24677</ObjectId>
+      <StateNumber>815</StateNumber>
+      <ColNames>user_id
+userroles_id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>user_userrole_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="75" parent="37" name="fkgnwd1u1snnwfcuem8o1os6g4k">
+      <ObjectId>24726</ObjectId>
+      <StateNumber>830</StateNumber>
+      <ColNames>user_id</ColNames>
+      <RefTableId>24666</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>user_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="76" parent="37" name="fkc65pxun0gf4mmog2puht3ffg">
+      <ObjectId>24721</ObjectId>
+      <StateNumber>829</StateNumber>
+      <ColNames>userroles_id</ColNames>
+      <RefTableId>24678</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>userrole</RefTableName>
+      <RefKeyName>userrole_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="77" parent="38" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>816</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="78" parent="38" name="role">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>816</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="79" parent="38" name="userrole_pkey">
+      <ObjectId>24681</ObjectId>
+      <StateNumber>816</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="80" parent="38" name="uk_a2shm4fx4ubol078nk8txb6jy">
+      <ObjectId>24699</ObjectId>
+      <StateNumber>824</StateNumber>
+      <ColNames>role</ColNames>
+      <Unique>1</Unique>
+      <CollationIds>100</CollationIds>
+      <CollationNames>default</CollationNames>
+      <ClassIds>3126</ClassIds>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="81" parent="38" name="userrole_pkey">
+      <ObjectId>24682</ObjectId>
+      <StateNumber>816</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>userrole_pkey</UnderlyingIndexName>
+    </key>
+    <key id="82" parent="38" name="uk_a2shm4fx4ubol078nk8txb6jy">
+      <ObjectId>24700</ObjectId>
+      <StateNumber>824</StateNumber>
+      <ColNames>role</ColNames>
+      <UnderlyingIndexName>uk_a2shm4fx4ubol078nk8txb6jy</UnderlyingIndexName>
+    </key>
+    <column id="83" parent="39" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>817</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="84" parent="39" name="amount">
+      <Position>2</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>817</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="85" parent="39" name="type_id">
+      <Position>3</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>817</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="86" parent="39" name="utility_pkey">
+      <ObjectId>24686</ObjectId>
+      <StateNumber>817</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="87" parent="39" name="utility_pkey">
+      <ObjectId>24687</ObjectId>
+      <StateNumber>817</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>utility_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="88" parent="39" name="fki1g5ehaldqskwys3863qxa6o1">
+      <ObjectId>24731</ObjectId>
+      <StateNumber>831</StateNumber>
+      <ColNames>type_id</ColNames>
+      <RefTableId>24688</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>utilitytype</RefTableName>
+      <RefKeyName>utilitytype_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="89" parent="40" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>818</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="90" parent="40" name="price">
+      <Position>2</Position>
+      <DataType>double precision|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>818</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="91" parent="40" name="unit">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>818</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="92" parent="40" name="utilityname">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>818</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="93" parent="40" name="utilitytype_pkey">
+      <ObjectId>24693</ObjectId>
+      <StateNumber>818</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <CollationIds>0</CollationIds>
+      <ClassIds>3124</ClassIds>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="94" parent="40" name="utilitytype_pkey">
+      <ObjectId>24694</ObjectId>
+      <StateNumber>818</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>utilitytype_pkey</UnderlyingIndexName>
+    </key>
   </database-model>
 </dataSource>

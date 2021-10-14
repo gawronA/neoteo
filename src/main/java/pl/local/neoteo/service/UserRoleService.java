@@ -6,6 +6,7 @@ import pl.local.neoteo.helper.DatabaseResult;
 
 import java.util.List;
 
+@Service
 public interface UserRoleService {
     public DatabaseResult addUserRole(UserRole appUserRole);
     public DatabaseResult deleteUserRole(long id);

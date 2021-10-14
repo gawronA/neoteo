@@ -6,7 +6,7 @@ import pl.local.neoteo.helper.DatabaseResult;
 
 import java.util.List;
 
-@Service//("subscriptionService")
+@Service
 public interface PropertyService {
     DatabaseResult updateProperty(Property property);
     Property getProperty(long id);

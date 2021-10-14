@@ -27,7 +27,7 @@ class UtilityExtServiceImpl {
     }
 }
 
-@Service("utilityService")
+@Service
 public class UtilityServiceImpl implements UtilityService {
 
     private final UtilityRepository utilityRepository;

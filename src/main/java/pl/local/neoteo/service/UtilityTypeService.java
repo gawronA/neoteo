@@ -6,7 +6,7 @@ import pl.local.neoteo.helper.DatabaseResult;
 
 import java.util.List;
 
-@Service//("paymentService")
+@Service
 public interface UtilityTypeService {
     public DatabaseResult addUtilityType(UtilityType payment);
     public DatabaseResult updateUtilityType(UtilityType payment);

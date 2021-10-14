@@ -7,7 +7,6 @@ import pl.local.neoteo.helper.DatabaseResult;
 import pl.local.neoteo.repository.UtilityTypeRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 class UtilityTypeExtServiceImpl {
@@ -29,7 +28,7 @@ class UtilityTypeExtServiceImpl {
     }
 }
 
-@Service("utilityTypeService")
+@Service
 public class UtilityTypeServiceImpl implements UtilityTypeService {
 
     private final UtilityTypeRepository utilityTypeRepository;

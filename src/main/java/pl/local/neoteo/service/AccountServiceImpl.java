@@ -40,15 +40,7 @@ public class AccountServiceImpl implements AccountService{
         User dbUser = this.userService.getUser(user.getId());
         if(dbUser == null) return DatabaseResult.Error;
 
-        dbUser.setActive(user.isActive());
-        if(user.getPassword() != null && !user.getPassword().isEmpty()) dbUser.setPassword(user.getPassword());
-        if(user.getFirstName() != null && !user.getFirstName().isEmpty()) dbUser.setFirstName(user.getFirstName());
-        if(user.getLastName() != null && !user.getLastName().isEmpty()) dbUser.setLastName(user.getLastName());
-        if(user.getEmail() != null && !user.getEmail().isEmpty()) dbUser.setEmail(user.getEmail());
-        if(user.getPhone() != null && !user.getPhone().isEmpty()) dbUser.setPhone(user.getPhone());
-        if(user.getUserRoles() != null && !user.getUserRoles().isEmpty()) dbUser.setUserRoles(user.getUserRoles());
-
-        return this.userService.editUser(dbUser);
+        return this.userService.updateUser(user);
     }
 
     @Override

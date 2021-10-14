@@ -31,7 +31,7 @@ class UserRoleExtServiceImpl {
     }
 }
 
-@Service("userRoleService")
+@Service
 public class UserRoleServiceImpl implements UserRoleService {
 
     private final UserRoleExtServiceImpl userRoleExtService;

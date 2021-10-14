@@ -43,7 +43,7 @@ public class HibernatePersistenceConfiguration {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(getDataSource());
-        em.setPackagesToScan("pl.local.mpark.entity");
+        em.setPackagesToScan("pl.local.neoteo.entity");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);

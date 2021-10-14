@@ -1,7 +1,6 @@
 package pl.local.neoteo.helper;
 
 import org.springframework.core.convert.converter.Converter;
-import pl.local.neoteo.entity.Utility;
 import pl.local.neoteo.entity.UtilityType;
 import pl.local.neoteo.service.UtilityTypeService;
 
