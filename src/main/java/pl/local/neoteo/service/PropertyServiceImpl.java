@@ -22,7 +22,7 @@ class PropertyExtServiceImpl {
     }
 }
 
-@Service//("propertyService")
+@Service("propertyService")
 public class PropertyServiceImpl implements PropertyService {
 
     private final PropertyRepository propertyRepository;

@@ -33,7 +33,7 @@ class UserExtServiceImpl {
     }
 }
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;

@@ -3,13 +3,13 @@ package pl.local.neoteo.helper;
 import org.springframework.data.util.Pair;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import pl.local.neoteo.entity.AppUser;
+import pl.local.neoteo.entity.User;
 
 
 public class PasswordValidator implements Validator {
 
     @Override
-    public boolean supports(Class clazz) { return AppUser.class.isAssignableFrom(clazz); }
+    public boolean supports(Class clazz) { return User.class.isAssignableFrom(clazz); }
 
 
     @Override

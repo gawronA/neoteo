@@ -29,7 +29,7 @@ class UtilityTypeExtServiceImpl {
     }
 }
 
-@Service//("utilityTypeService")
+@Service("utilityTypeService")
 public class UtilityTypeServiceImpl implements UtilityTypeService {
 
     private final UtilityTypeRepository utilityTypeRepository;

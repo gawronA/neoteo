@@ -5,15 +5,15 @@ import org.apache.commons.validator.routines.RegexValidator;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
-import pl.local.neoteo.entity.AppUser;
+import pl.local.neoteo.entity.User;
 
 
-public class AppUserValidator implements Validator {
+public class UserValidator implements Validator {
     EmailValidator emailValidator = EmailValidator.getInstance();
     RegexValidator telephoneNumberValidator = new RegexValidator("\\d{3}-\\d{3}-\\d{3}");
 
     @Override
-    public boolean supports(Class clazz) { return AppUser.class.isAssignableFrom(clazz); }
+    public boolean supports(Class clazz) { return User.class.isAssignableFrom(clazz); }
 
 
     @Override
@@ -24,10 +24,10 @@ public class AppUserValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "telephoneNumber", "validation.telephoneNumberRequired");
 
         if(errors.getErrorCount() == 0) {
-            if(!emailValidator.isValid(((AppUser)o).getEmail())) {
+            if(!emailValidator.isValid(((User)o).getEmail())) {
                 errors.rejectValue("email", "validation.emailInvalid");
             }
-            if(!telephoneNumberValidator.isValid(((AppUser)o).getTelephoneNumber())) {
+            if(!telephoneNumberValidator.isValid(((User)o).getPhone())) {
                 errors.rejectValue("telephoneNumber", "validation.telephoneNumberInvalid");
             }
         }

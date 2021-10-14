@@ -16,9 +16,7 @@ import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 import pl.local.neoteo.helper.*;
 import pl.local.neoteo.service.UserRoleService;
-import pl.local.neoteo.service.BookingService;
-import pl.local.neoteo.service.PaymentService;
-import pl.local.neoteo.service.SubscriptionService;
+import pl.local.neoteo.service.UtilityTypeService;
 import pl.local.neoteo.utils.NotificationInterceptor;
 
 import javax.annotation.Resource;
@@ -29,14 +27,10 @@ import java.util.Locale;
 @ComponentScan("pl.local.neoteo")
 public class AppConfig implements WebMvcConfigurer {
 
-    @Resource(name="paymentService")
-    private PaymentService paymentService;
-    @Resource(name="subscriptionService")
-    private SubscriptionService subscriptionService;
-    @Resource(name="bookingService")
-    private BookingService bookingService;
-    @Resource(name="appUserRoleService")
-    private UserRoleService appUserRoleService;
+    @Resource
+    private UtilityTypeService utilityTypeService;
+    @Resource
+    private UserRoleService userRoleService;
 
     @Bean
     public TilesConfigurer tilesConfigurer() {
@@ -103,48 +97,30 @@ public class AppConfig implements WebMvcConfigurer {
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addConverter(getMyPaymentConverter());
-        registry.addConverter(getMyPaymentListConverter());
-        registry.addConverter(getMySubscriptionConverter());
-        registry.addConverter(getMyBookingConverter());
-        registry.addConverter(getMyBookingListConverter());
-        registry.addConverter(getMyAppUserRolesConverter());
-        registry.addConverter(getMyAppUserRolesListConverter());
+        registry.addConverter(getMyUtilityTypeConverter());
+        registry.addConverter(getMyUtilityTypeListConverter());
+        registry.addConverter(getMyUserRolesConverter());
+        registry.addConverter(getMyUserRolesListConverter());
 
     }
 
     @Bean
-    public PaymentConverter getMyPaymentConverter() {
-        return new PaymentConverter(this.paymentService);
+    public UtilityTypeConverter getMyUtilityTypeConverter() {
+        return new UtilityTypeConverter(this.utilityTypeService);
     }
 
     @Bean
-    public PaymentListConverter getMyPaymentListConverter() {
-        return new PaymentListConverter(this.paymentService);
+    public UtilityTypeListConverter getMyUtilityTypeListConverter() {
+        return new UtilityTypeListConverter(this.utilityTypeService);
     }
 
     @Bean
-    public SubscriptionConverter getMySubscriptionConverter() {
-        return new SubscriptionConverter(this.subscriptionService);
+    public UserRolesConverter getMyUserRolesConverter() {
+        return new UserRolesConverter(this.userRoleService);
     }
 
     @Bean
-    public BookingConverter getMyBookingConverter() {
-        return new BookingConverter(this.bookingService);
-    }
-
-    @Bean
-    BookingListConverter getMyBookingListConverter() {
-        return new BookingListConverter(this.bookingService);
-    }
-
-    @Bean
-    public AppUserRolesConverter getMyAppUserRolesConverter() {
-        return new AppUserRolesConverter(this.appUserRoleService);
-    }
-
-    @Bean
-    public AppUserRolesListConverter getMyAppUserRolesListConverter() {
-        return new AppUserRolesListConverter(this.appUserRoleService);
+    public UserRolesListConverter getMyUserRolesListConverter() {
+        return new UserRolesListConverter(this.userRoleService);
     }
 }
