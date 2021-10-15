@@ -16,7 +16,7 @@ public class PasswordValidator implements Validator {
     public void validate(Object o, Errors errors) {
         Pair<String, String> passwords = (Pair<String, String>)o;
         if(passwords.getFirst().isEmpty()) errors.rejectValue("password", "validation.passwordRequired");
-        if(passwords.getSecond().isEmpty()) errors.rejectValue("password", "validation.passwordRequired");
+        if(passwords.getSecond().isEmpty()) errors.rejectValue("password", "validation.repeatPasswordRequired");
 
         if(errors.getErrorCount() == 0) {
             if(!passwords.getFirst().equals(passwords.getSecond())) {

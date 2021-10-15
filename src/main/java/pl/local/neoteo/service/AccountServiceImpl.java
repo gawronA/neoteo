@@ -3,6 +3,7 @@ package pl.local.neoteo.service;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.local.neoteo.entity.Property;
 import pl.local.neoteo.entity.User;
 import pl.local.neoteo.entity.UserRole;
 import pl.local.neoteo.helper.DatabaseResult;

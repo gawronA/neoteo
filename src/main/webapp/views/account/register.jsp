@@ -15,6 +15,8 @@
 <spring:message code="user.telephoneNumber" var="msgUserTelephoneNumber"/>
 <spring:message code="user.password" var="msgUserPassword"/>
 <spring:message code="user.repeatPassword" var="msgUserRepeatPassword"/>
+<spring:message code="user.pesel" var="msgUserPesel"/>
+<spring:message code="property.name" var="msgPropertyName"/>
 <spring:message code="none" var="none"/>
 
 <tiles:insertAttribute name="navbar"/>
@@ -35,10 +37,13 @@
                     <form:errors path="email"/>
                 </c:set>
                 <c:set var="telephoneNumberError">
-                    <form:errors path="telephoneNumber"/>
+                    <form:errors path="phone"/>
                 </c:set>
                 <c:set var="passwordError">
                     <form:errors path="password"/>
+                </c:set>
+                <c:set var="peselError">
+                    <form:errors path="pesel"/>
                 </c:set>
 
                 <div class="ui error message">
@@ -70,7 +75,7 @@
                             <form:input path="email" placeholder="${msgUserEmail}"/>
                         </div>
                         <div class="field ${not empty telephoneNumberError?"error":""}">
-                            <form:input path="telephoneNumber" placeholder="${msgUserTelephoneNumber}"/>
+                            <form:input path="phone" placeholder="${msgUserTelephoneNumber}"/>
                         </div>
                     </div>
                 </div>
@@ -85,11 +90,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="field">
-                    <label><spring:message code="user.subscription"/></label>
-                    <form:select path="subscription">
-                        <form:options items="${subscriptions}" itemValue="id" itemLabel="name"/>
-                    </form:select>
+                <div class="field ${not empty peselError?"error":""}"">
+                    <label><spring:message code="user.pesel"/></label>
+                    <form:input path="pesel" placeholder="${msgUserPesel}"/>
                 </div>
                 <div class="field">
                     <div class="g-recaptcha" data-sitekey="6LcHySUaAAAAAFd79YDCxU2vv1o2WpDXzrDGW7io"></div>

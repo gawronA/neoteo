@@ -186,6 +186,14 @@
             <version>2.12.0</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.sendgrid/sendgrid-java -->
+        <dependency>
+            <groupId>com.sendgrid</groupId>
+            <artifactId>sendgrid-java</artifactId>
+            <version>4.7.5</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>
