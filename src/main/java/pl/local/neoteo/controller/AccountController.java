@@ -37,6 +37,7 @@ import com.sendgrid.*;
 public class AccountController {
 
     private final AccountService accountService;
+    private final UserService userService;
     //private final PdfService pdfService;
     private final ReCaptchaService reCaptchaService;
     private final UserValidator userValidator = new UserValidator();
@@ -44,8 +45,10 @@ public class AccountController {
 
 
     public AccountController(AccountService accountService,
+                             UserService userService,
                              ReCaptchaService reCaptchaService,
                              MailService mailService) {
+        this.userService = userService;
         this.accountService = accountService;
         this.reCaptchaService = reCaptchaService;
     }
@@ -88,25 +91,25 @@ public class AccountController {
         return "redirect:/login?successMsg=" + URLEncoder.encode("message.tokenValid", StandardCharsets.UTF_8);
     }
 
-    /*
+
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "details", method = RequestMethod.GET)
     public String details(Model model, Principal principal) {
-        AppUser user = this.appUserService.getUser(principal.getName());
+        User user = this.userService.getUserByEmail(principal.getName());
         model.addAttribute("user", user);
         return "/account/details";
     }
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "details", method = RequestMethod.POST)
-    public String details(@ModelAttribute("user") AppUser user, BindingResult bindingResult, HttpServletRequest request, Principal principal) throws ServletException {
-        appUserValidator.validate(user, bindingResult);
+    public String details(@ModelAttribute("user") User user, BindingResult bindingResult, HttpServletRequest request, Principal principal) throws ServletException {
+        userValidator.validate(user, bindingResult);
         if(bindingResult.hasErrors()) return "redirect:details?errorMsg=" + URLEncoder.encode("message.invalidData", StandardCharsets.UTF_8);
-        user.setUsername(user.getEmail());
+        //user.setEmail(user.getEmail());
 
         var result = this.accountService.updateAccount(user);
         if(result != DatabaseResult.Success) return "redirect:details?errorMsg=" + URLEncoder.encode("message.error", StandardCharsets.UTF_8);
-        if(!user.getUsername().equals(principal.getName())) request.logout();
+        if(!user.getEmail().equals(principal.getName())) request.logout();
         return "redirect:details?successMsg=" + URLEncoder.encode("message.detailsChanged", StandardCharsets.UTF_8);
     }
 
@@ -114,15 +117,15 @@ public class AccountController {
     @RequestMapping(value = "changePassword", method = RequestMethod.POST)
     public String changePassword(@RequestParam("password") String password, @RequestParam("repeatPassword") String repeatPassword,
                                  Principal principal) {
-        Errors bindingResult = new BindException(new AppUser(), "password");
+        Errors bindingResult = new BindException(new User(), "password");
         passwordValidator.validate(Pair.of(password, repeatPassword), bindingResult);
         if(bindingResult.hasErrors()) return "redirect:details?errorMsg=" + URLEncoder.encode("validation.passwordShouldMatch", StandardCharsets.UTF_8);
-        AppUser user = appUserService.getUser(principal.getName());
+        User user = userService.getUserByEmail(principal.getName());
         var result = this.accountService.changePassword(user, password);
         if(result != DatabaseResult.Success) return "redirect:details?errorMsg=" + URLEncoder.encode("message.error", StandardCharsets.UTF_8);
         return "redirect:details?successMsg=" + URLEncoder.encode("message.passwordChanged", StandardCharsets.UTF_8);
     }
-
+/*
     @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(value = "changeSubscription", method = RequestMethod.GET)
     public String changeSubscriptionGet(@RequestParam("id") long id, Model model, Principal principal) {

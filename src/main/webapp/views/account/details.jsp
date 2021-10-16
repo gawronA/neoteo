@@ -8,9 +8,10 @@
 <spring:message code="user.firstName" var="msgUserFirstName"/>
 <spring:message code="user.lastName" var="msgUserLastName"/>
 <spring:message code="user.email" var="msgUserEmail"/>
-<spring:message code="user.telephoneNumber" var="msgUserTelephoneNumber"/>
+<spring:message code="user.phone" var="msgUserPhone"/>
 <spring:message code="user.password" var="msgUserPassword"/>
 <spring:message code="user.repeatPassword" var="msgUserRepeatPassword"/>
+<spring:message code="user.pesel" var="msgUserPesel"/>
 
 <tiles:insertAttribute name="navbar"/>
 <div class="main-banner"></div>
@@ -41,9 +42,12 @@
                             <form:input path="email" placeholder="${msgUserEmail}"/>
                         </div>
                         <div class="field">
-                            <form:input path="telephoneNumber" placeholder="${msgUserTelephoneNumber}"/>
+                            <form:input path="phone" placeholder="${msgUserPhone}"/>
                         </div>
                     </div>
+                </div>
+                <div class="field">
+                    <form:input path="pesel" placeholder="${msgUserPesel}"/>
                 </div>
                 <button class="ui grey button" type="submit"><spring:message code="account.details.updateInformation"/></button>
             </form:form>

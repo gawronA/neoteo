@@ -12,7 +12,7 @@
 <spring:message code="user.firstName" var="msgUserFirstName"/>
 <spring:message code="user.lastName" var="msgUserLastName"/>
 <spring:message code="user.email" var="msgUserEmail"/>
-<spring:message code="user.telephoneNumber" var="msgUserTelephoneNumber"/>
+<spring:message code="user.phone" var="msgUserPhone"/>
 <spring:message code="user.password" var="msgUserPassword"/>
 <spring:message code="user.repeatPassword" var="msgUserRepeatPassword"/>
 <spring:message code="user.pesel" var="msgUserPesel"/>
@@ -75,7 +75,7 @@
                             <form:input path="email" placeholder="${msgUserEmail}"/>
                         </div>
                         <div class="field ${not empty telephoneNumberError?"error":""}">
-                            <form:input path="phone" placeholder="${msgUserTelephoneNumber}"/>
+                            <form:input path="phone" placeholder="${msgUserPhone}"/>
                         </div>
                     </div>
                 </div>
