@@ -37,37 +37,37 @@
 <!--                    HOME-->
 
 <!--                    DASHBOARD-->
-    <definition name="dashboard.definition" extends="base.definition">
-        <put-attribute name="stylesheets" value="/views/dashboard/_stylesheets.jsp"/>
-        <put-attribute name="scripts" value="/views/dashboard/_scripts.jsp"/>
+    <definition name="property.definition" extends="base.definition">
+        <put-attribute name="stylesheets" value="/views/property/_stylesheets.jsp"/>
+        <put-attribute name="scripts" value="/views/property/_scripts.jsp"/>
     </definition>
 
-    <definition name="/dashboard/index_admin" extends="dashboard.definition">
-        <put-attribute name="title" value="Admin dashboard"/>
+    <definition name="/property/index_admin" extends="dashboard.definition">
+        <put-attribute name="title" value="Admin property"/>
         <put-attribute name="body">
-            <definition template="/views/dashboard/layout.jsp" extends="navbar.definition">
-                <put-attribute name="sidenav" value="/views/dashboard/sidenav.jsp"/>
-                <put-attribute name="body" value="/views/dashboard/index_admin.jsp"/>
+            <definition template="/views/property/layout.jsp" extends="navbar.definition">
+                <put-attribute name="sidenav" value="/views/property/sidenav.jsp"/>
+                <put-attribute name="body" value="/views/property/index_admin.jsp"/>
             </definition>
         </put-attribute>
     </definition>
 
-    <definition name="/dashboard/index_employee" extends="dashboard.definition">
-        <put-attribute name="title" value="Employee dashboard"/>
+    <definition name="/property/index_manager" extends="property.definition">
+        <put-attribute name="title" value="Employee property"/>
         <put-attribute name="body">
-            <definition template="/views/dashboard/layout.jsp" extends="navbar.definition">
-                <put-attribute name="sidenav" value="/views/dashboard/sidenav.jsp"/>
-                <put-attribute name="body" value="/views/dashboard/index_employee.jsp"/>
+            <definition template="/views/property/layout.jsp" extends="navbar.definition">
+                <put-attribute name="sidenav" value="/views/property/sidenav.jsp"/>
+                <put-attribute name="body" value="/views/property/index_employee.jsp"/>
             </definition>
         </put-attribute>
     </definition>
 
-    <definition name="/dashboard/index_user" extends="dashboard.definition">
-        <put-attribute name="title" value="User dashboard"/>
+    <definition name="/property/index_tenant" extends="property.definition">
+        <put-attribute name="title" value="User property"/>
         <put-attribute name="body">
-            <definition template="/views/dashboard/layout.jsp" extends="navbar.definition">
-                <put-attribute name="sidenav" value="/views/dashboard/sidenav.jsp"/>
-                <put-attribute name="body" value="/views/dashboard/index_user.jsp"/>
+            <definition template="/views/property/layout.jsp" extends="navbar.definition">
+                <put-attribute name="sidenav" value="/views/property/sidenav.jsp"/>
+                <put-attribute name="body" value="/views/property/index_user.jsp"/>
             </definition>
         </put-attribute>
     </definition>

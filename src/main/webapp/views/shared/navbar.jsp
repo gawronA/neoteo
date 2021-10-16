@@ -22,8 +22,7 @@
             <%--            <img src="<c:url value="/resources/images/logo.png"/>" height="75px" width="75px" alt="logo"/>--%>
             <div class="header item">Mobility Park</div>
             <a class="right navbar item" href="<c:url value="/"/>"><spring:message code="navbar.start"/></a>
-            <a class="navbar item" href="<c:url value="/bookings"/>"><spring:message code="navbar.book"/></a>
-            <a class="navbar item" href="<c:url value="/prices"/>"><spring:message code="navbar.prices"/></a>
+            <a class="navbar item" href="<c:url value="/property"/>"><spring:message code="navbar.property"/></a>
             <c:if test="${pageContext.request.userPrincipal.name == null}">
                 <a class="navbar item" href="<c:url value="/login"/>"><spring:message code="navbar.login"/></a>
                 <a class="ui primary navbar button" href="<c:url value="/account/register"/>"><spring:message code="navbar.signin"/></a>
