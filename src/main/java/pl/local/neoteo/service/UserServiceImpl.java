@@ -61,7 +61,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public DatabaseResult updateUser(User user) {
-        return addUser(user);
+        try {
+            userExtService.save(user);
+        }
+        catch (Exception ex) {
+            return DatabaseResult.AlreadyExist;
+        }
+        return DatabaseResult.Success;
     }
 
     @Override
@@ -83,8 +89,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public User getUser(String email) {
+    public User getUserByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    @Override
+    @Transactional
+    public User getUserByActivationToken(String token) {
+        return userRepository.findByActivationToken(token);
     }
 
     @Override

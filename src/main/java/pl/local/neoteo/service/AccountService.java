@@ -11,4 +11,5 @@ public interface AccountService {
     DatabaseResult createAccount(User user);
     DatabaseResult updateAccount(User user);
     DatabaseResult changePassword(User user, String password);
+    DatabaseResult activateAccount(String token);
 }

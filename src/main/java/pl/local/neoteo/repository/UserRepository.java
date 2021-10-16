@@ -10,4 +10,5 @@ import pl.local.neoteo.entity.User;
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByEmail(String email);
     User findById(long id);
+    User findByActivationToken(String token);
 }

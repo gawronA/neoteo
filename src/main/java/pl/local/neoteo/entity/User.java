@@ -41,6 +41,11 @@ public class User {
 
     private boolean isActive;
 
+    @NotNull
+    @NotEmpty
+    @Column(unique = true)
+    private String activationToken;
+
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Property property;
 
@@ -133,5 +138,13 @@ public class User {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    public String getActivationToken() {
+        return activationToken;
+    }
+
+    public void setActivationToken(String activationToken) {
+        this.activationToken = activationToken;
     }
 }

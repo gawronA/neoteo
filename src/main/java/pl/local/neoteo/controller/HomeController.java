@@ -13,7 +13,7 @@ import java.security.Principal;
 public class HomeController {
 
     @RequestMapping("")
-    public String home(Model model, SecurityContextHolderAwareRequestWrapper wrapper, Principal principal) {
+    public String home() {
         return "/home/index";
     }
 }

@@ -1,5 +1,8 @@
 package pl.local.neoteo.controller;
 
+import com.sendgrid.helpers.mail.Mail;
+import com.sendgrid.helpers.mail.objects.Content;
+import com.sendgrid.helpers.mail.objects.Email;
 import org.springframework.data.util.Pair;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -16,6 +19,7 @@ import pl.local.neoteo.helper.PasswordValidator;
 import pl.local.neoteo.helper.UserValidator;
 import pl.local.neoteo.service.*;
 
+import javax.security.auth.Subject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,21 +30,23 @@ import java.security.Principal;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import com.sendgrid.*;
 
 @Controller
 @RequestMapping("account")
 public class AccountController {
 
     private final AccountService accountService;
-    private final PdfService pdfService;
+    //private final PdfService pdfService;
     private final ReCaptchaService reCaptchaService;
     private final UserValidator userValidator = new UserValidator();
     private final PasswordValidator passwordValidator = new PasswordValidator();
 
 
-    public AccountController(AccountService accountService, PdfService pdfService, ReCaptchaService reCaptchaService) {
+    public AccountController(AccountService accountService,
+                             ReCaptchaService reCaptchaService,
+                             MailService mailService) {
         this.accountService = accountService;
-        this.pdfService = pdfService;
         this.reCaptchaService = reCaptchaService;
     }
 
@@ -65,11 +71,21 @@ public class AccountController {
             return "/account/register";
         }
         else {
-
             var result = this.accountService.createAccount(user);
-            if(result != DatabaseResult.Success) return "redirect:register?errorMsg=" + URLEncoder.encode("message.registerFailed", StandardCharsets.UTF_8);
-            return "redirect:/login?successMsg=" + URLEncoder.encode("message.registerSuccessful", StandardCharsets.UTF_8);
+            if(result != DatabaseResult.Success) {
+                return "redirect:register?errorMsg=" + URLEncoder.encode("message.registerFailed", StandardCharsets.UTF_8);
+            }
+            else {
+                return "redirect:/login?successMsg=" + URLEncoder.encode("message.registerSuccessful", StandardCharsets.UTF_8);
+            }
         }
+    }
+
+    @RequestMapping(value="activate", method = RequestMethod.GET)
+    public String activate(@RequestParam("token") String token) {
+        var result = this.accountService.activateAccount(token);
+        if(result != DatabaseResult.Success) return "redirect:/login?errorMsg=" + URLEncoder.encode("message.tokenInvalid", StandardCharsets.UTF_8);
+        return "redirect:/login?successMsg=" + URLEncoder.encode("message.tokenValid", StandardCharsets.UTF_8);
     }
 
     /*

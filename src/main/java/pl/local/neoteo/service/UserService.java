@@ -13,6 +13,7 @@ public interface UserService {
     public DatabaseResult updateUser(User user);
     public DatabaseResult deleteUser(long id);
     public User getUser(long id);
-    public User getUser(String email);
+    public User getUserByEmail(String email);
+    public User getUserByActivationToken(String token);
     public List<User> getUsers();
 }
