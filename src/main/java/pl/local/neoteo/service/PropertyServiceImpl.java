@@ -3,6 +3,7 @@ package pl.local.neoteo.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.local.neoteo.entity.Property;
+import pl.local.neoteo.entity.User;
 import pl.local.neoteo.helper.DatabaseResult;
 import pl.local.neoteo.repository.PropertyRepository;
 
@@ -27,14 +28,26 @@ public class PropertyServiceImpl implements PropertyService {
 
     private final PropertyRepository propertyRepository;
     private final PropertyExtServiceImpl propertyExtService;
+    private final UserService userService;
 
-    public PropertyServiceImpl(PropertyRepository propertyRepository, PropertyExtServiceImpl propertyExtService) {
+    public PropertyServiceImpl(PropertyRepository propertyRepository, PropertyExtServiceImpl propertyExtService, UserService userService) {
         this.propertyRepository = propertyRepository;
         this.propertyExtService = propertyExtService;
+        this.userService = userService;
     }
 
-    private DatabaseResult addProperty(Property property) {
+    public DatabaseResult createProperty(Property property, String username) {
         property.setId(0);
+        User user = userService.getUserByEmail(username);
+        property.setUser(user);
+        user.setProperty(property);
+        return userService.updateUser(user);
+    }
+
+    public DatabaseResult updateProperty(Property property) {
+        var dbProperty = this.propertyRepository.findById(property.getId());
+        if(dbProperty.isEmpty()) return DatabaseResult.Error;
+
         try {
             this.propertyExtService.save(property);
         }
@@ -42,13 +55,6 @@ public class PropertyServiceImpl implements PropertyService {
             return DatabaseResult.Error;
         }
         return DatabaseResult.Success;
-    }
-
-    public DatabaseResult updateProperty(Property property) {
-        var dbProperty = this.propertyRepository.findById(property.getId());
-        if(dbProperty.isEmpty()) return DatabaseResult.Error;
-
-        return addProperty(property);
     }
 
     @Transactional

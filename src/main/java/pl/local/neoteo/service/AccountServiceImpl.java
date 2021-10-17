@@ -68,6 +68,7 @@ public class AccountServiceImpl implements AccountService{
         dbUser.setEmail(user.getEmail());
         dbUser.setPhone(user.getPhone());
         dbUser.setPesel(user.getPesel());
+        dbUser.setActive(user.isActive());
 
         return this.userService.updateUser(dbUser);
     }

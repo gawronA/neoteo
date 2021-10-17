@@ -8,6 +8,7 @@ import java.util.List;
 
 @Service
 public interface PropertyService {
+    DatabaseResult createProperty(Property property, String username);
     DatabaseResult updateProperty(Property property);
     Property getProperty(long id);
     List<Property> getProperties();

@@ -11,7 +11,7 @@ public class Init extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{ pl.local.neoteo.configuration.SecurityConfiguration.class, AppConfig.class, HibernatePersistenceConfiguration.class};
+        return new Class[]{ pl.local.neoteo.configuration.SecurityConfiguration.class, AppConfig.class, HibernatePersistenceConfiguration.class, UserRoleInitalizer.class};
     }
 
     @Override
