@@ -2,9 +2,10 @@ package pl.local.neoteo.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Entity
-public class Utility {
+public class Record {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -12,6 +13,12 @@ public class Utility {
 
     @NotNull
     private double amount;
+
+    @NotNull
+    private double price;
+
+    @NotNull
+    private Date date;
 
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
@@ -39,5 +46,21 @@ public class Utility {
 
     public void setType(UtilityType type) {
         this.type = type;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

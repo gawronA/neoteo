@@ -24,6 +24,9 @@ public class Property {
     @OneToMany(fetch = FetchType.EAGER)
     private Set<UtilityType> utilityTypes;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Record> records;
+
     public long getId() {
         return id;
     }
@@ -62,5 +65,13 @@ public class Property {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    public Set<Record> getRecords() {
+        return records;
+    }
+
+    public void setRecords(Set<Record> records) {
+        this.records = records;
     }
 }

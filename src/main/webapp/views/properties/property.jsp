@@ -13,6 +13,7 @@
     <form:form id="propertiesModalForm" class="ui form" action="properties" method="post" modelAttribute="property">
         <form:input type="hidden" path="id"/>
         <form:input type="hidden" path="active"/>
+        <input type="hidden" name="utilityTypes" value="0"/>
             <div class="field">
                 <label><spring:message code="name"/></label>
                 <div class="field">

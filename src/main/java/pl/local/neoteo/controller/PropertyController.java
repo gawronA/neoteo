@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.local.neoteo.entity.Property;
 import pl.local.neoteo.entity.User;
-import pl.local.neoteo.entity.Utility;
 import pl.local.neoteo.entity.UtilityType;
 import pl.local.neoteo.helper.DatabaseResult;
 import pl.local.neoteo.service.PropertyService;
@@ -17,7 +16,6 @@ import pl.local.neoteo.service.UtilityTypeService;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.security.Principal;
-import java.util.List;
 import java.util.Set;
 
 @Controller
