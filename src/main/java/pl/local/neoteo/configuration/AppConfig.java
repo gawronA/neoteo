@@ -99,8 +99,8 @@ public class AppConfig implements WebMvcConfigurer {
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(getMyUtilityTypeConverter());
         registry.addConverter(getMyUtilityTypeListConverter());
-        registry.addConverter(getMyUserRolesConverter());
-        registry.addConverter(getMyUserRolesListConverter());
+//        registry.addConverter(getMyUserRolesConverter());
+//        registry.addConverter(getMyUserRolesListConverter());
 
     }
 
@@ -114,7 +114,7 @@ public class AppConfig implements WebMvcConfigurer {
         return new UtilityTypeListConverter(this.utilityTypeService);
     }
 
-    @Bean
+    /*@Bean
     public UserRolesConverter getMyUserRolesConverter() {
         return new UserRolesConverter(this.userRoleService);
     }
@@ -122,5 +122,5 @@ public class AppConfig implements WebMvcConfigurer {
     @Bean
     public UserRolesListConverter getMyUserRolesListConverter() {
         return new UserRolesListConverter(this.userRoleService);
-    }
+    }*/
 }

@@ -39,6 +39,14 @@
                 </div>
             </div>
         </div>
+        <div class="field">
+            <label>Media</label>
+            <select name="utilityTypes" multiple="true">
+                <c:forEach items="${utilityTypes}" var="utilityType">
+                    <option value="${utilityType.id}" label="${utilityType.utilityName}">${utilityType.utilityName}</option>
+                </c:forEach>
+            </select>
+        </div>
     </form:form>
 </c:if>
 

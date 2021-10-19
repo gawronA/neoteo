@@ -21,8 +21,8 @@ public class Property {
     @OneToOne(fetch = FetchType.EAGER)
     private User user;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<Utility> utilities;
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<UtilityType> utilityTypes;
 
     public long getId() {
         return id;
@@ -48,12 +48,12 @@ public class Property {
         this.user = user;
     }
 
-    public Set<Utility> getUtilities() {
-        return utilities;
+    public Set<UtilityType> getUtilityTypes() {
+        return utilityTypes;
     }
 
-    public void setUtilities(Set<Utility> utilities) {
-        this.utilities = utilities;
+    public void setUtilityTypes(Set<UtilityType> utilityTypes) {
+        this.utilityTypes = utilityTypes;
     }
 
     public boolean isActive() {

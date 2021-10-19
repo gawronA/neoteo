@@ -59,6 +59,15 @@
             </definition>
         </put-attribute>
     </definition>
+
+    <definition name="/properties/utilities" extends="properties.definition">
+        <put-attribute name="body">
+            <definition template="/views/properties/layout.jsp" extends="navbar.definition">
+                <put-attribute name="sidenav" value="/views/properties/sidenav.jsp"/>
+                <put-attribute name="body" value="/views/properties/utilities.jsp"/>
+            </definition>
+        </put-attribute>
+    </definition>
 <!--                    PROPERTY-->
 
 <!--                    DASHBOARD-->
