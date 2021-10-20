@@ -32,7 +32,7 @@ public class RestApiController {
     public String postRecord(@RequestBody Map<String, Object> payload) {
         long propertyId = ((Number)payload.get("propertyId")).longValue();
         long utilityTypeId = ((Number)payload.get("utilityTypeId")).longValue();
-        double amount = (double)payload.get("amount");
+        double amount = ((Number)payload.get("amount")).doubleValue();
 
         //SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
         try {
@@ -46,7 +46,7 @@ public class RestApiController {
 
             Record record = new Record();
             record.setAmount(amount);
-            record.setPrice(utilityType.getPrice());
+            record.setPrice(amount * utilityType.getPrice());
             record.setType(utilityType);
             record.setDate(Calendar.getInstance().getTime());
 

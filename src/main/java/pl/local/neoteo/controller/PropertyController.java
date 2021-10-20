@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.local.neoteo.entity.Property;
+import pl.local.neoteo.entity.Record;
 import pl.local.neoteo.entity.User;
 import pl.local.neoteo.entity.UtilityType;
 import pl.local.neoteo.helper.DatabaseResult;
@@ -16,7 +17,10 @@ import pl.local.neoteo.service.UtilityTypeService;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.security.Principal;
+import java.util.Comparator;
+import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/properties")
@@ -38,7 +42,9 @@ public class PropertyController {
         if(wrapper.isUserInRole("ROLE_TENANT"))
         {
             User user = userService.getUserByEmail(principal.getName());
-            model.addAttribute("property", user.getProperty());
+            Property property = user.getProperty();
+            property.setRecords(property.getRecords().stream().sorted(Comparator.comparing(Record::getDate).reversed()).collect(Collectors.toCollection(LinkedHashSet::new)));
+            model.addAttribute("property", property);
             return "/properties/index_tenant";
         }
         else
@@ -53,8 +59,11 @@ public class PropertyController {
     public String getProperty(@PathVariable("id")long id, Model model) {
         if(id == 0) {
             model.addAttribute("property", new Property());
+            //model.addAttribute("records", null);
         }
         else {
+            Property property = propertyService.getProperty(id);
+            property.setRecords(property.getRecords().stream().sorted(Comparator.comparing(Record::getDate).reversed()).collect(Collectors.toCollection(LinkedHashSet::new)));
             model.addAttribute("property", propertyService.getProperty(id));
         }
         model.addAttribute("utilityTypes", utilityTypeService.getUtilityTypes());
@@ -63,7 +72,7 @@ public class PropertyController {
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "properties", method = RequestMethod.POST)
-    public String addProperty(@ModelAttribute("property") Property property, @RequestParam("utilityTypes") Set<UtilityType> utilityTypes, Principal principal) {
+    public String addProperty(@ModelAttribute("property") Property property, @RequestParam(value = "utilityTypes", required = false) Set<UtilityType> utilityTypes, Principal principal) {
         property.setUtilityTypes(utilityTypes);
         if(property.getId() == 0)
         {
@@ -73,8 +82,9 @@ public class PropertyController {
         }
         else
         {
-            User user = propertyService.getProperty(property.getId()).getUser();
-            property.setUser(user);
+            Property dbProperty = propertyService.getProperty(property.getId());
+            property.setUser(dbProperty.getUser());
+            property.setRecords(dbProperty.getRecords());
             var result = propertyService.updateProperty(property);
             if(result != DatabaseResult.Success) return "redirect:properties?errorMsg=" + URLEncoder.encode("message.updatePropertyFailed", StandardCharsets.UTF_8);
             else return "redirect:properties?successMsg=" + URLEncoder.encode("message.updatePropertySuccess", StandardCharsets.UTF_8);

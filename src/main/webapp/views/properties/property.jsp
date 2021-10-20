@@ -48,6 +48,31 @@
                 </c:forEach>
             </select>
         </div>
+        <c:if test="${property.records != null}">
+            <div class="field">
+                <label>Pomiary</label>
+                <table style="width: 100%">
+                    <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Medium</th>
+                        <th>Zużycie</th>
+                        <th>Koszt</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${property.records}" var="record">
+                        <tr>
+                            <th>${record.date}</th>
+                            <th>${record.type.utilityName}</th>
+                            <th>${record.amount} ${record.type.unit}</th>
+                            <th>${record.price} zł</th>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </c:if>
     </form:form>
 </c:if>
 

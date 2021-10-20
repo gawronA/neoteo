@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div id="propertiesModal" class="ui modal">
     <i class="close icon"></i>
@@ -30,16 +31,29 @@
                 <p><spring:message code="property.awaitingAccept"/></p>
             </c:if>
             <c:if test="${property.active}">
-                <table class="ui striped celled table">
-                    <tbody>
-                    <c:forEach items="${property.utilities}" var="utility">
+                <div class="field">
+                    <label>Pomiary</label>
+                    <table style="width: 100%">
+                        <thead>
                         <tr>
-                            <th>${utility.type.utilityName}</th>
-                            <th>${utility.amount} ${utility.type.unit}</th>
+                            <th>Data</th>
+                            <th>Medium</th>
+                            <th>Zużycie</th>
+                            <th>Koszt</th>
                         </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${property.records}" var="record">
+                            <tr>
+                                <th>${record.date}</th>
+                                <th>${record.type.utilityName}</th>
+                                <th><fmt:formatNumber type="number" maxFractionDigits="3" value="${record.amount}"/> ${record.type.unit}</th>
+                                <th><fmt:formatNumber type="number" maxFractionDigits="2" value="${record.price}"/> zł</th>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
             </c:if>
         </c:if>
     </div>

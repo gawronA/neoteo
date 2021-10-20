@@ -1,6 +1,10 @@
+<%@ page import="java.util.stream.Collectors" %>
+<%@ page import="pl.local.neoteo.entity.Property" %>
+<%@ page import="pl.local.neoteo.entity.UtilityType" %>
 <%@ page contentType="text/html;charset=UTF8" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
@@ -22,6 +26,7 @@
                     <tr>
                         <th><spring:message code="name"/></th>
                         <th><spring:message code="user"/></th>
+                        <th>Media</th>
                         <th><spring:message code="property.active"/></th>
                         <th></th>
                     </tr>
@@ -31,6 +36,11 @@
                     <tr>
                         <th>${property.name}</th>
                         <th>${property.user.email}</th>
+                        <th>
+                            <c:forEach items="${property.utilityTypes}" var="utilityType">
+                                ${utilityType.utilityName},
+                            </c:forEach>
+                        </th>
                         <th>${property.active}</th>
                         <th>
                             <button class="ui grey button properties"

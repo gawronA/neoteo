@@ -7,6 +7,7 @@ import pl.local.neoteo.entity.User;
 import pl.local.neoteo.helper.DatabaseResult;
 import pl.local.neoteo.repository.PropertyRepository;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -40,6 +41,7 @@ public class PropertyServiceImpl implements PropertyService {
         property.setId(0);
         User user = userService.getUserByEmail(username);
         property.setUser(user);
+        property.setRecords(new HashSet<>());
         user.setProperty(property);
         return userService.updateUser(user);
     }
