@@ -46,7 +46,7 @@ public class User {
     @Column(unique = true)
     private String activationToken;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy = "user")
     private Property property;
 
     @ManyToMany(fetch = FetchType.EAGER)

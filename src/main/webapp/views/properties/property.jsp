@@ -4,6 +4,7 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <spring:message code="name" var="msgName"/>
 
@@ -40,14 +41,6 @@
                 </div>
             </div>
         </div>
-        <div class="field">
-            <label>Media</label>
-            <select name="utilityTypes" multiple="true">
-                <c:forEach items="${utilityTypes}" var="utilityType">
-                    <option value="${utilityType.id}" label="${utilityType.utilityName}">${utilityType.utilityName}</option>
-                </c:forEach>
-            </select>
-        </div>
         <c:if test="${property.records != null}">
             <div class="field">
                 <label>Pomiary</label>
@@ -65,8 +58,8 @@
                         <tr>
                             <th>${record.date}</th>
                             <th>${record.type.utilityName}</th>
-                            <th>${record.amount} ${record.type.unit}</th>
-                            <th>${record.price} zł</th>
+                            <th><fmt:formatNumber type="number" maxFractionDigits="3" value="${record.amount}"/> ${record.type.unit}</th>
+                            <th><fmt:formatNumber type="number" maxFractionDigits="2" value="${record.price}"/> zł</th>
                         </tr>
                     </c:forEach>
                     </tbody>

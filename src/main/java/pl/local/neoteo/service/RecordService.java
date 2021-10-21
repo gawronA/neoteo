@@ -8,8 +8,8 @@ import java.util.List;
 
 @Service
 public interface RecordService {
-    public DatabaseResult addRecord(Record utility);
-    public DatabaseResult updateRecord(Record utility);
+    public DatabaseResult addRecord(Record record);
+    public DatabaseResult updateRecord(Record record);
     public DatabaseResult deleteRecord(long id);
     public Record getRecord(long id);
     public List<Record> getRecords();

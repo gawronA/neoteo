@@ -3,6 +3,7 @@ package pl.local.neoteo.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Entity
 public class UtilityType {
@@ -21,6 +22,9 @@ public class UtilityType {
 
     @NotNull
     private double price;
+
+    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true, mappedBy = "type")
+    private Set<Record> records;
 
     public long getId() {
         return id;
@@ -54,4 +58,11 @@ public class UtilityType {
         this.price = price;
     }
 
+    public Set<Record> getRecords() {
+        return records;
+    }
+
+    public void setRecords(Set<Record> records) {
+        this.records = records;
+    }
 }

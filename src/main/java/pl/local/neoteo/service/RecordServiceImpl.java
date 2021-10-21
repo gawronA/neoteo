@@ -50,8 +50,8 @@ public class RecordServiceImpl implements RecordService {
     }
 
     public DatabaseResult updateRecord(Record record) {
-        var dbUtility = this.recordRepository.findById(record.getId());
-        if(dbUtility.isEmpty()) return DatabaseResult.Error;
+//        var dbUtility = this.recordRepository.findById(record.getId());
+//        if(dbUtility.isEmpty()) return DatabaseResult.Error;
 
         try {
             this.recordExtService.save(record);

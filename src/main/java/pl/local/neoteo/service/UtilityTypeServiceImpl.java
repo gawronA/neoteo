@@ -2,6 +2,7 @@ package pl.local.neoteo.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.local.neoteo.entity.Record;
 import pl.local.neoteo.entity.UtilityType;
 import pl.local.neoteo.helper.DatabaseResult;
 import pl.local.neoteo.repository.UtilityTypeRepository;
@@ -33,10 +34,12 @@ public class UtilityTypeServiceImpl implements UtilityTypeService {
 
     private final UtilityTypeRepository utilityTypeRepository;
     private final UtilityTypeExtServiceImpl utilityTypeExtService;
+    private final RecordService recordService;
 
-    public UtilityTypeServiceImpl(UtilityTypeRepository utilityTypeRepository, UtilityTypeExtServiceImpl utilityTypeExtService) {
+    public UtilityTypeServiceImpl(UtilityTypeRepository utilityTypeRepository, UtilityTypeExtServiceImpl utilityTypeExtService, RecordService recordService) {
         this.utilityTypeRepository = utilityTypeRepository;
         this.utilityTypeExtService = utilityTypeExtService;
+        this.recordService = recordService;
     }
 
     @Override
@@ -63,6 +66,11 @@ public class UtilityTypeServiceImpl implements UtilityTypeService {
     public DatabaseResult deleteUtilityType(long id) {
         UtilityType utilityType = getUtilityType(id);
         if(utilityType == null) return DatabaseResult.Error;
+        if(utilityType.getRecords() != null && !utilityType.getRecords().isEmpty()) {
+            for(Record record:utilityType.getRecords()) {
+                recordService.deleteRecord(record.getId());
+            }
+        }
 
         try {
             this.utilityTypeExtService.delete(id);

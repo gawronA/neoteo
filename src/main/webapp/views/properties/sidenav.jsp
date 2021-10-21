@@ -11,13 +11,7 @@
 <security:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')">
     <a class="item" href="<c:url value="/properties/utilities"/>"><spring:message code="dashboard.sidenav.utilities"/></a>
 </security:authorize>
+<security:authorize access="hasRole('ROLE_ADMIN')">
+    <a class="item" href="<c:url value="/users"/>"><spring:message code="dashboard.sidenav.users"/></a>
+</security:authorize>
 
-<c:if test="${authEmployee}">
-    <a class="item" href="<c:url value="/bookings"/>"><spring:message code="dashboard.sidenav.bookings"/></a>
-</c:if>
-
-<c:if test="${not authAdmin and not authEmployee}">
-    <a class="item" href="<c:url value="/payments"/>"><spring:message code="dashboard.sidenav.payments"/></a>
-    <a class="item" href="<c:url value="/bookings"/>"><spring:message code="dashboard.sidenav.bookings"/></a>
-    <a class="item" href="<c:url value="/subscriptions"/>"><spring:message code="dashboard.sidenav.subscriptions"/></a>
-</c:if>

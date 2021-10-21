@@ -46,7 +46,7 @@ $(document).ready(function() {
         }
 
         $.get(`utilities/${id}`, function (data) {
-            console.log(`GOT property ${id} modal form`);
+            console.log(`GOT utility ${id} modal form`);
             $('#utilitiesModal .content').html(data);
             $('#utilitiesModal').modal('setting', {
                 closable: false,
@@ -63,5 +63,31 @@ $(document).ready(function() {
 
     $('button#confirm').click(function (event) {
         $('#confirmBookingForm').submit();
-    })
+    });
+
+    $('button.users').click(function(event) {
+        const header = $('#userModal .header');
+        const id = $(event.target).data('id');
+        const name = $(event.target).data('name');
+
+        if(id === 0) {
+            header.html(`${header.data('add')}`);
+            $('button#delete').css('display', 'none');
+        }
+        else {
+            header.html(`${header.data('edit')} ${name}`);
+            $('button#delete').css('display', 'inline-block');
+        }
+
+        $.get(`users/${id}`, function (data) {
+            console.log(`GOT user ${id} modal form`);
+            $('#userModal .content').html(data);
+            $('#userModal').modal('setting', {
+                closable: false,
+                onApprove: function (click) {
+                    $('#userModalForm').submit();
+                }
+            }).modal('show');
+        });
+    });
 });

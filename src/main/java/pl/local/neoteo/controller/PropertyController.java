@@ -11,6 +11,7 @@ import pl.local.neoteo.entity.User;
 import pl.local.neoteo.entity.UtilityType;
 import pl.local.neoteo.helper.DatabaseResult;
 import pl.local.neoteo.service.PropertyService;
+import pl.local.neoteo.service.RecordService;
 import pl.local.neoteo.service.UserService;
 import pl.local.neoteo.service.UtilityTypeService;
 
@@ -29,11 +30,13 @@ public class PropertyController {
     private final UserService userService;
     private final PropertyService propertyService;
     private final UtilityTypeService utilityTypeService;
+    private final RecordService recordService;
 
-    public PropertyController(UserService userService, PropertyService propertyService, UtilityTypeService utilityTypeService) {
+    public PropertyController(UserService userService, PropertyService propertyService, UtilityTypeService utilityTypeService, RecordService recordService) {
         this.userService = userService;
         this.propertyService = propertyService;
         this.utilityTypeService = utilityTypeService;
+        this.recordService = recordService;
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -43,7 +46,8 @@ public class PropertyController {
         {
             User user = userService.getUserByEmail(principal.getName());
             Property property = user.getProperty();
-            property.setRecords(property.getRecords().stream().sorted(Comparator.comparing(Record::getDate).reversed()).collect(Collectors.toCollection(LinkedHashSet::new)));
+            if(property != null)
+                property.setRecords(property.getRecords().stream().sorted(Comparator.comparing(Record::getDate).reversed()).collect(Collectors.toCollection(LinkedHashSet::new)));
             model.addAttribute("property", property);
             return "/properties/index_tenant";
         }
@@ -64,7 +68,7 @@ public class PropertyController {
         else {
             Property property = propertyService.getProperty(id);
             property.setRecords(property.getRecords().stream().sorted(Comparator.comparing(Record::getDate).reversed()).collect(Collectors.toCollection(LinkedHashSet::new)));
-            model.addAttribute("property", propertyService.getProperty(id));
+            model.addAttribute("property", property);
         }
         model.addAttribute("utilityTypes", utilityTypeService.getUtilityTypes());
         return "/properties/property";
@@ -72,8 +76,7 @@ public class PropertyController {
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "properties", method = RequestMethod.POST)
-    public String addProperty(@ModelAttribute("property") Property property, @RequestParam(value = "utilityTypes", required = false) Set<UtilityType> utilityTypes, Principal principal) {
-        property.setUtilityTypes(utilityTypes);
+    public String addProperty(@ModelAttribute("property") Property property, Principal principal) {
         if(property.getId() == 0)
         {
             var result = propertyService.createProperty(property, principal.getName());
@@ -134,7 +137,7 @@ public class PropertyController {
     @RequestMapping(value = "deleteUtilities", method = RequestMethod.POST)
     public String deleteUtility(@RequestParam("id") long id) {
         var result = utilityTypeService.deleteUtilityType(id);
-        if(result != DatabaseResult.Success) return "redirect:utilities?errorMsg=" + URLEncoder.encode("message.deleteUtilitySuccess", StandardCharsets.UTF_8);
+        if(result != DatabaseResult.Success) return "redirect:utilities?errorMsg=" + URLEncoder.encode("message.deleteUtilityFailed", StandardCharsets.UTF_8);
         else return "redirect:utilities?successMsg=" + URLEncoder.encode("message.deleteUtilitySuccess", StandardCharsets.UTF_8);
     }
 }

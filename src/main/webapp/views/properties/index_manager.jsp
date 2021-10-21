@@ -21,26 +21,24 @@
 <div class="ui vertical segment">
     <div class="ui container">
         <h2 class="header"><spring:message code="property.title"/></h2>
+        <c:if test="${empty properties}">
+            <p>Brak mieszkań dodanych przez użytkowników</p>
+        </c:if>
+        <c:if test="${not empty properties}">
             <table class="ui striped celled table">
                 <thead>
-                    <tr>
-                        <th><spring:message code="name"/></th>
-                        <th><spring:message code="user"/></th>
-                        <th>Media</th>
-                        <th><spring:message code="property.active"/></th>
-                        <th></th>
-                    </tr>
+                <tr>
+                    <th><spring:message code="name"/></th>
+                    <th><spring:message code="user"/></th>
+                    <th><spring:message code="property.active"/></th>
+                    <th></th>
+                </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${properties}" var="property">
                     <tr>
                         <th>${property.name}</th>
                         <th>${property.user.email}</th>
-                        <th>
-                            <c:forEach items="${property.utilityTypes}" var="utilityType">
-                                ${utilityType.utilityName},
-                            </c:forEach>
-                        </th>
                         <th>${property.active}</th>
                         <th>
                             <button class="ui grey button properties"
@@ -53,5 +51,6 @@
                 </c:forEach>
                 </tbody>
             </table>
+        </c:if>
     </div>
 </div>

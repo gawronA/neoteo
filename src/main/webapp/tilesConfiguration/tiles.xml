@@ -40,6 +40,7 @@
     <definition name="properties.definition" extends="base.definition">
         <put-attribute name="stylesheets" value="/views/properties/_stylesheets.jsp"/>
         <put-attribute name="scripts" value="/views/properties/_scripts.jsp"/>
+        <put-attribute name="title" value="Mieszkania"/>
     </definition>
 
     <definition name="/properties/index_tenant" extends="properties.definition">
@@ -65,6 +66,16 @@
             <definition template="/views/properties/layout.jsp" extends="navbar.definition">
                 <put-attribute name="sidenav" value="/views/properties/sidenav.jsp"/>
                 <put-attribute name="body" value="/views/properties/utilities.jsp"/>
+            </definition>
+        </put-attribute>
+    </definition>
+
+    <definition name="/users" extends="properties.definition">
+        <put-attribute name="title" value="Użytkownicy"/>
+        <put-attribute name="body">
+            <definition template="/views/properties/layout.jsp" extends="navbar.definition">
+                <put-attribute name="sidenav" value="/views/properties/sidenav.jsp"/>
+                <put-attribute name="body" value="/views/properties/users.jsp"/>
             </definition>
         </put-attribute>
     </definition>

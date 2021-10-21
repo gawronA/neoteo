@@ -20,7 +20,9 @@ public class Record {
     @NotNull
     private Date date;
 
-    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Property property;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private UtilityType type;
 
@@ -62,5 +64,13 @@ public class Record {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Property getProperty() {
+        return property;
+    }
+
+    public void setProperty(Property property) {
+        this.property = property;
     }
 }

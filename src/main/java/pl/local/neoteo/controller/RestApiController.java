@@ -1,6 +1,7 @@
 package pl.local.neoteo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.local.neoteo.entity.Property;
 import pl.local.neoteo.entity.Record;
@@ -29,7 +30,7 @@ public class RestApiController {
     }
 
     @RequestMapping(value="record", method=RequestMethod.POST, produces = "application/json")
-    public String postRecord(@RequestBody Map<String, Object> payload) {
+    public ResponseEntity<String> postRecord(@RequestBody Map<String, Object> payload) {
         long propertyId = ((Number)payload.get("propertyId")).longValue();
         long utilityTypeId = ((Number)payload.get("utilityTypeId")).longValue();
         double amount = ((Number)payload.get("amount")).doubleValue();
@@ -48,13 +49,14 @@ public class RestApiController {
             record.setAmount(amount);
             record.setPrice(amount * utilityType.getPrice());
             record.setType(utilityType);
+            record.setProperty(property);
             record.setDate(Calendar.getInstance().getTime());
 
-            property.getRecords().add(record);
-            if(propertyService.updateProperty(property) != DatabaseResult.Success) return null;
-            else return "OK";
+            var result = recordService.addRecord(record);
+            if(result != DatabaseResult.Success) throw new Exception();
+            else return ResponseEntity.ok().build();
         } catch(Exception ex) {
-            return null;
+            return ResponseEntity.badRequest().build();
         }
 
     }
