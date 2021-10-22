@@ -32,15 +32,13 @@ public class ReportNotificator {
             var res = mailService.send(
                     "244009@edu.p.lodz.pl",
                     user.getEmail(),
-                    "NeoTeo accound activation",
+                    "NeoTeo raport",
                     "<h3>Hello " +
                             user.getFirstName() +
                             " " +
                             user.getLastName() +
                             "</h3>" +
-                            "<p>Click <a href=\"http://localhost:8081/account/activate?token=" +
-                            user.getActivationToken() +
-                            "\">here</a> to activate your account</p>",
+                            "<p>Raport bieżącego zużycia</p>",
                     "raport_" + user.getFirstName() + "_" + user.getLastName() + ".pdf",
                     out.toByteArray());
         }

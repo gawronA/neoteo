@@ -24,7 +24,7 @@
             <tr>
                 <th><spring:message code="dashboard.users.firstAndLastName"/></th>
                 <th><spring:message code="user.email"/></th>
-                <th><spring:message code="user.telephoneNumber"/></th>
+                <th><spring:message code="user.phone"/></th>
                 <th><spring:message code="user.property"/></th>
                 <th><spring:message code="users.roles"/></th>
                 <th></th>
