@@ -20,7 +20,7 @@
     <div class="ui inverted borderless secondary menu">
         <div class="ui container">
             <%--            <img src="<c:url value="/resources/images/logo.png"/>" height="75px" width="75px" alt="logo"/>--%>
-            <div class="header item">Mobility Park</div>
+            <div class="header item">NeoTeo</div>
             <a class="right navbar item" href="<c:url value="/"/>"><spring:message code="navbar.start"/></a>
             <a class="navbar item" href="<c:url value="/properties/properties"/>"><spring:message code="navbar.property"/></a>
             <c:if test="${pageContext.request.userPrincipal.name == null}">
@@ -48,7 +48,7 @@
                         <div class="divider"></div>
                         <a class="item" href="?lang=pl"><span class="flag-icon flag-icon-pl"></span> Polski</a>
                         <div class="divider"></div>
-                        <a class="item" href="?lang=es"><span class="flag-icon flag-icon-es"></span> Español</a>
+                        <a class="item" href="?lang=ru"><span class="flag-icon flag-icon-ru"></span> русский</a>
                     </div>
                 </div>
             </div>
