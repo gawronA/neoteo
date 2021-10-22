@@ -11,7 +11,7 @@
 <%--    MAIN BANNER--%>
     <div class="main-banner flex-column center middle">
         <h1 class="header"><spring:message code="home.header"/></h1>
-        <a class="ui primary button" href="<c:url value="/bookings/"/>"><spring:message code="home.bookNow"/> <i class="arrow right icon"></i></a>
+<%--        <a class="ui primary button" href="<c:url value="/bookings/"/>"><spring:message code="home.bookNow"/> <i class="arrow right icon"></i></a>--%>
     </div>
 </div>
 
@@ -32,8 +32,9 @@
         </div>
     </div>
 </div>
+<%--
 
-<%--    HOW TO--%>
+&lt;%&ndash;    HOW TO&ndash;%&gt;
 <div class="ui expressive vertical how-to segment">
     <div class="ui very relaxed grid container">
         <div class="four wide column">
@@ -54,6 +55,7 @@
         </div>
     </div>
 </div>
+--%>
 
 
 

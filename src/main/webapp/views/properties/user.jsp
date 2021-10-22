@@ -113,7 +113,7 @@
         </div>
     </form:form>
 </c:if>
-<form id="deleteModalForm" action="<c:url value="deleteUser"/>" method="post">
+<form id="deleteModalForm" action="<c:url value="/users/deleteUser"/>" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <input type="hidden" id="deleteModalInputId" name="id" value="${appUser.id}"/>
+    <input type="hidden" id="deleteModalInputId" name="id" value="${user.id}"/>
 </form>

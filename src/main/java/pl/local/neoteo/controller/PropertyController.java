@@ -10,11 +10,10 @@ import pl.local.neoteo.entity.Record;
 import pl.local.neoteo.entity.User;
 import pl.local.neoteo.entity.UtilityType;
 import pl.local.neoteo.helper.DatabaseResult;
-import pl.local.neoteo.service.PropertyService;
-import pl.local.neoteo.service.RecordService;
-import pl.local.neoteo.service.UserService;
-import pl.local.neoteo.service.UtilityTypeService;
+import pl.local.neoteo.service.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.security.Principal;
@@ -31,12 +30,14 @@ public class PropertyController {
     private final PropertyService propertyService;
     private final UtilityTypeService utilityTypeService;
     private final RecordService recordService;
+    private final PdfService pdfService;
 
-    public PropertyController(UserService userService, PropertyService propertyService, UtilityTypeService utilityTypeService, RecordService recordService) {
+    public PropertyController(UserService userService, PropertyService propertyService, UtilityTypeService utilityTypeService, RecordService recordService, PdfService pdfService) {
         this.userService = userService;
         this.propertyService = propertyService;
         this.utilityTypeService = utilityTypeService;
         this.recordService = recordService;
+        this.pdfService = pdfService;
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -139,5 +140,22 @@ public class PropertyController {
         var result = utilityTypeService.deleteUtilityType(id);
         if(result != DatabaseResult.Success) return "redirect:utilities?errorMsg=" + URLEncoder.encode("message.deleteUtilityFailed", StandardCharsets.UTF_8);
         else return "redirect:utilities?successMsg=" + URLEncoder.encode("message.deleteUtilitySuccess", StandardCharsets.UTF_8);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping("report")
+    public String getReport(Principal principal, HttpServletResponse response) {
+        User user = userService.getUserByEmail(principal.getName());
+        try {
+            OutputStream o = response.getOutputStream();
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/pdf");
+            response.setHeader("Content-Disposition", "inline; filename=neoteo_raport_" + user.getFirstName() + "_" + user.getLastName());
+            pdfService.generateReport(user, o);
+            return "redirect:/properties";
+        } catch (Exception ex) {
+            return "redirect:/properties";
+        }
+
     }
 }

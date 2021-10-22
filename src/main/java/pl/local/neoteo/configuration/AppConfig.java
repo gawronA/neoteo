@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.*;
@@ -24,6 +25,7 @@ import java.util.Locale;
 
 @Configuration
 @EnableWebMvc
+@EnableScheduling
 @ComponentScan("pl.local.neoteo")
 public class AppConfig implements WebMvcConfigurer {
 
@@ -99,8 +101,8 @@ public class AppConfig implements WebMvcConfigurer {
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(getMyUtilityTypeConverter());
         registry.addConverter(getMyUtilityTypeListConverter());
-//        registry.addConverter(getMyUserRolesConverter());
-//        registry.addConverter(getMyUserRolesListConverter());
+        registry.addConverter(getMyUserRolesConverter());
+        registry.addConverter(getMyUserRolesListConverter());
 
     }
 
@@ -114,7 +116,7 @@ public class AppConfig implements WebMvcConfigurer {
         return new UtilityTypeListConverter(this.utilityTypeService);
     }
 
-    /*@Bean
+    @Bean
     public UserRolesConverter getMyUserRolesConverter() {
         return new UserRolesConverter(this.userRoleService);
     }
@@ -122,5 +124,5 @@ public class AppConfig implements WebMvcConfigurer {
     @Bean
     public UserRolesListConverter getMyUserRolesListConverter() {
         return new UserRolesListConverter(this.userRoleService);
-    }*/
+    }
 }

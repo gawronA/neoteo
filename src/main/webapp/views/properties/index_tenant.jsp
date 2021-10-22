@@ -54,6 +54,9 @@
                         </tbody>
                     </table>
                 </div>
+                <div>
+                    <a class="ui button" href="/properties/report" target="_blank">Pobierz raport zużycia</a>
+                </div>
             </c:if>
         </c:if>
     </div>
