@@ -20,7 +20,7 @@
 <!--                    HOME-->
     <definition name="/home/index" extends="base.definition">
         <put-attribute name="stylesheets" value="/views/home/_stylesheets.jsp"/>
-        <put-attribute name="title" value="Welcome to Mobility Park!"/>
+        <put-attribute name="title" value="Welcome to NeoTeo!"/>
         <put-attribute name="body">
             <definition template="/views/home/index.jsp" extends="navbar.definition"/>
         </put-attribute>

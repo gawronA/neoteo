@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div class="field">
-                    <label>Hasło</label>
+                    <label><spring:message code="user.password"/></label>
                     <div class="two fields">
                         <div class="field ${not empty passwordError?"error":""}">
                             <form:input path="password" type="password" placeholder="${msgUserPassword}"/>

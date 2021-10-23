@@ -21,7 +21,7 @@ public class ReportNotificator {
     @Autowired
     UserService userService;
 
-    @Scheduled(fixedRate = 300000)
+    @Scheduled(fixedRate = 90000)
     public void notification() {
         var users = userService.getUsers();
         for(User user : users) {

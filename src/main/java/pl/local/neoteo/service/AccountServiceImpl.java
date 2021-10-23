@@ -60,6 +60,11 @@ public class AccountServiceImpl implements AccountService{
 
     @Override
     public DatabaseResult updateAccount(User user) {
+        return updateAccount(user, null);
+    }
+
+    @Override
+    public DatabaseResult updateAccount(User user, String password) {
         User dbUser = this.userService.getUser(user.getId());
         if(dbUser == null) return DatabaseResult.Error;
 
@@ -71,14 +76,16 @@ public class AccountServiceImpl implements AccountService{
         dbUser.setActive(user.isActive());
         if(user.getUserRoles() != null && !user.getUserRoles().isEmpty()) dbUser.setUserRoles(user.getUserRoles());
 
+        if(password != null) dbUser.setPassword(password);
+
         return this.userService.updateUser(dbUser);
     }
 
     @Override
     public DatabaseResult changePassword(User user, String password) {
         password = hashPassword(password);
-        user.setPassword(password);
-        return updateAccount(user);
+        //user.setPassword(password);
+        return updateAccount(user, password);
     }
 
     public DatabaseResult activateAccount(String token) {

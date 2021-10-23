@@ -23,7 +23,7 @@ public class UtilityType {
     @NotNull
     private double price;
 
-    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true, mappedBy = "type")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "type")
     private Set<Record> records;
 
     public long getId() {
