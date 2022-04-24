@@ -9,4 +9,4 @@ Maintainers are allowed to view and assign flats, tenants, media types and set m
 Administrators are allowed to add/modify/delete user accounts.\
 All users are able to register and login.
 
-Java, Spring, PostgreSQL
+Java, Spring, PostgreSQL, JavaScript, CSS
