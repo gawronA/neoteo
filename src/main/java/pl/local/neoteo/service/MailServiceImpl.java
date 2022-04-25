@@ -38,7 +38,7 @@ public class MailServiceImpl implements MailService {
             mail.addAttachments(attachments);
         }
 
-        SendGrid sg = new SendGrid("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");
+        SendGrid sg = new SendGrid("***");
         Request req = new Request();
         try {
             req.setMethod(Method.POST);
